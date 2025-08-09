@@ -1,0 +1,5 @@
+bin/
+obj/
+Test/Test/bin/
+Test/Test/obj/
+Net2.cs
