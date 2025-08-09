@@ -1,6 +1,6 @@
 # My C# Deep Learning AI Library More like PyTorch & TensorFlow
 
-![Neon Gradient Flow Chart](imgs\NeonGradientFlowchart.gif)
+![Neon Gradient Flow Chart](./imgs/NeonGradientFlowchart.gif)
 
 ***Mini should really be Mighty!***
 
