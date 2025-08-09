@@ -173,7 +173,7 @@ dotnet build
 
 ***Follow the README Examples*** – Work through the simple examples to see end‑to‑end usage of tensors, losses, and parameter updates in C#
 
-## Example 2
+## Example 3
 
 ```csharp
 public class Net : NetModule<float[][]>
