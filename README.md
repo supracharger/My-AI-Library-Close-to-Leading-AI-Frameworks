@@ -132,6 +132,22 @@ Supported operators: + - * /
 Example of Multiplication of a single number. 'singlenumber': can be of type double, float, or int.
 Supported operators: + - * /
 
+## Architecture and Key Components
+
+***Tensor\<T\>*** – Core data structure representing values in the computation graph; supports adding nodes, consolidating multiple nodes, branching, and retrieving scalar items for loss calculations.
+
+***AutoGrad*** – Builds and traverses the computation graph. Developers mark inputs via AddRoot overloads, enabling automatic backward passes without manually coding gradients.
+
+***Module*** – Base class for layers; defines parameter stepping, gradient smoothing, state serialization, and utilities like weight initialization.
+
+***NetModule\<T\>*** – Specialization for full networks with convenience Forward overloads and a multithreaded TrainIt method for training loops and early stopping.
+
+***Function*** – Collection of static operations (e.g., transpose, reshape) with forward and backward implementations to integrate seamlessly with AutoGrad.
+
+***NormInf*** – Module for fitting and applying input/output normalization across sequences, including interactive refitting behavior.
+
+***Linear Layer*** – Example of a fully connected module demonstrating weight storage, forward passes, and gradient handling via AutoGrad hooks.
+
 ## Mac & Linux OS
 
 This Library is written in .NET 4.7. However I ported it with Visual Studio Community 2022 to .NET 7. It should work with Mac, Linux, and Windows.
@@ -146,6 +162,16 @@ dotnet build
 3) Press Run and Debug (or F5) and pick C#: Launch when asked—VS Code will generate the needed launch config. 
 
 ![Neural Network Flowchart Animation](imgs/NeuralNetworkFlowchartAnimation.gif)
+
+## Pointers for Further Exploration
+
+***Extend Layers*** – Study existing modules like Linear, Conv1d, or TransConv1d to implement custom layers or optimizers.
+
+***Understand AutoGrad Internals*** – Dive deeper into Tensor\<T\> and AutoGrad to learn how nodes, branches, and gradient accumulation work.
+
+***Experiment with Training*** – Examine NetModule\<T\>.TrainIt to grasp multithreading, noise injection, and early stopping strategies.
+
+***Follow the README Examples*** – Work through the simple examples to see end‑to‑end usage of tensors, losses, and parameter updates in C#
 
 ## Example 2
 
