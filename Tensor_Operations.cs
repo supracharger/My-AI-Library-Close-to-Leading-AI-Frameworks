@@ -265,7 +265,7 @@ namespace MiniNet
         {
             if (right is Tensor<float[]> f)
             {
-                SameShape(f._data, right);
+                SameShape(left, f._data);
                 var y = Subtract(left, f._data);
                 AutoGrad.BckF BackFunc = yy => yy.GradSum(Multiply(SameShape((float[])yy._grad, y), -1));
                 return (Tensor<T>)(object)f.AddNode(y, null, BackFunc, false);
@@ -276,7 +276,7 @@ namespace MiniNet
         {
             if (right is Tensor<float[][]> f)
             {
-                SameShape(f._data, right);
+                SameShape(left, f._data);
                 var y = Subtract(left, f._data);
                 AutoGrad.BckF BackFunc = yy => yy.GradSum(Multiply(SameShape((float[][])yy._grad, y), -1));
                 return (Tensor<T>)(object)f.AddNode(y, null, BackFunc, false);
@@ -287,7 +287,7 @@ namespace MiniNet
         {
             if (right is Tensor<float[][][]> f)
             {
-                SameShape(f._data, right);
+                SameShape(left, f._data);
                 var y = Subtract(left, f._data);
                 AutoGrad.BckF BackFunc = yy => yy.GradSum(Multiply(SameShape((float[][][])yy._grad, y), -1));
                 return (Tensor<T>)(object)f.AddNode(y, null, BackFunc, false);
@@ -298,7 +298,7 @@ namespace MiniNet
         {
             if (right is Tensor<float[][][][]> f)
             {
-                SameShape(f._data, right);
+                SameShape(left, f._data);
                 var y = Subtract(left, f._data);
                 AutoGrad.BckF BackFunc = yy => yy.GradSum(Multiply(SameShape((float[][][][])yy._grad, y), -1));
                 return (Tensor<T>)(object)f.AddNode(y, null, BackFunc, false);

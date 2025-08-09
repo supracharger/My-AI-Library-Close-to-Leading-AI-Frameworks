@@ -218,7 +218,7 @@ namespace MiniNet
             {
                 var c = 0;
                 var cnt = 0;
-                // Learning Rate Warm-Up: Increase Learning Rage
+                // Learning Rate Warm-Up: Increase Learning Rate
                 if (i > 0)
                     lr = Math.Min(lr * (float)Math.Sqrt(10), 1.3f);
                 // exit early
@@ -480,7 +480,7 @@ namespace MiniNet
             {
                 var c = 0;
                 var cnt = 0;
-                // Learning Rate Warm-Up: Increase Learning Rage
+                // Learning Rate Warm-Up: Increase Learning Rate
                 if (i > 0)
                     lr = Math.Min(lr * (float)Math.Sqrt(10), 1.3f);
                 // exit early
