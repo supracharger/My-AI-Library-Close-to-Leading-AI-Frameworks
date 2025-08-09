@@ -63,13 +63,21 @@ net.Step(lr: 1e-3f);
 This library has various functions:
 
 ***T***: Transpose dim0 & dim1.
+
 ***Reshape***: Reshape dimensions into a different shape.
+
 ***Sqrt***: Bi-Square root activation function. Negative values can be used & will return a negative Square Root value.
+
 ***Matmul***: Matrix Multiplication.
+
 ***Take***: Takes the first number of values on a dimension.
+
 ***Flatten***: Flattens two dimensions into one.
+
 ***Cat***: Concatenates values on specific dimension.
+
 ***Repeat***: Repeats values on Specific dimensions.
+
 ***Split***: Splits values on a specific dimension to multiple values.
 
 ## Layers (Modules)
@@ -77,14 +85,25 @@ This library has various functions:
 This library has various Layers:
 
 ***TransConv***: My Transformer Convolutional 1d Layer. Very close to a Transformer layer, but using Conv1d layers instead of fully connected layers.
+
 ***TransConv1d***: My Interesting interpretation of combining a Transformer & Convolutional 1d layer.
+
 ***BatchNormBack***: Batch Norm on the last dimension.
+
 ***Conv1d***: My version of convolution 1D. Convolution is usually used for images, but I'm using it in place of a fully connected layer.
-*Conv1dSparse*: Multiple Conv1d's are stacked ontop of each other over a sequence.
+
+***Conv1dSparse***: Multiple Conv1d's are stacked ontop of each other over a sequence.
+
 ***Embedding***: usually but not always used in Natural Language Processing.
+
 ***Gate***: First half of inputs are gated against the second half of inputs.
-        Example: value[i]*wt[i] + value[i+length/2]*(1-wt[i])
+Example: 
+```csharp
+value[i]*wt[i] + value[i+length/2]*(1-wt[i])
+```
+
 ***Linear***: Linear or Fully Connected Deep Layer.
+
 ***LinearSparse***: Stacked Linear Layers by size 'dim.'
 
 ## Module & NetModule\<T\>
