@@ -8,7 +8,10 @@ This library closer represents the cutting edge library in PyTorch.
 
 This library utilizes what is known as ***Auto Grad***. Just define the forward pass and train the network!
 
-This library also supports ***Multithreading***. It chunks the dataset to the number of cores on your CPU. See <code>NetModule.TrainIt()</code>
+This library also supports ***Multithreading***. It chunks the dataset to the number of cores on your CPU. See
+```csharp 
+NetModule.TrainIt()
+```
 
 The last time I checked (which was awhile ago) C# did not have many good Deep Learning libraries. The one that comes to mind is NeuronDotNet. Not very flexible what so ever! You define some feed forward layers and the end!
 
@@ -20,7 +23,7 @@ I did want to flex my muscles implementing fully commented Deep learning code. P
 
 ### Simple Example 1
 
-<code>
+```csharp
 // Get Gradients through one iteration ......................
 // Y values: [0.7952096, 0.09830558, -1]
 // labels values: [-1, 0.6272376, 0.5339667]
@@ -32,11 +35,11 @@ var loss = (y - labels).Abs().Sum();
 loss.Backward();
 // Gradients: [1, -1, -1]
 y._grad
-</code>
+```
 
 ### Simple Example 2
 
-<code>
+```csharp
 // Train Network through one iteration .....................
 // Initialize Network
 var net = new TestLinear(smoothBatchLen:1);
@@ -53,28 +56,20 @@ Console.WriteLine(loss.Item());
 loss.Backward();
 // Update Parameters of Network
 net.Step(lr: 1e-3f);
-</code>
+```
 
 ## Functions
 
 This library has various functions:
 
 ***T***: Transpose dim0 & dim1.
-
 ***Reshape***: Reshape dimensions into a different shape.
-
 ***Sqrt***: Bi-Square root activation function. Negative values can be used & will return a negative Square Root value.
-
 ***Matmul***: Matrix Multiplication.
-
 ***Take***: Takes the first number of values on a dimension.
-
 ***Flatten***: Flattens two dimensions into one.
-
 ***Cat***: Concatenates values on specific dimension.
-
 ***Repeat***: Repeats values on Specific dimensions.
-
 ***Split***: Splits values on a specific dimension to multiple values.
 
 ## Layers (Modules)
@@ -82,29 +77,27 @@ This library has various functions:
 This library has various Layers:
 
 ***TransConv***: My Transformer Convolutional 1d Layer. Very close to a Transformer layer, but using Conv1d layers instead of fully connected layers.
-
 ***TransConv1d***: My Interesting interpretation of combining a Transformer & Convolutional 1d layer.
-
 ***BatchNormBack***: Batch Norm on the last dimension.
-
 ***Conv1d***: My version of convolution 1D. Convolution is usually used for images, but I'm using it in place of a fully connected layer.
 *Conv1dSparse*: Multiple Conv1d's are stacked ontop of each other over a sequence.
 ***Embedding***: usually but not always used in Natural Language Processing.
-
 ***Gate***: First half of inputs are gated against the second half of inputs.
         Example: value[i]*wt[i] + value[i+length/2]*(1-wt[i])
-
 ***Linear***: Linear or Fully Connected Deep Layer.
-
 ***LinearSparse***: Stacked Linear Layers by size 'dim.'
 
-## Module & NetModule<T>
+## Module & NetModule\<T\>
 
-*Module*: like PyTorch is the class you inherit from to create a layer with parameters or nest modules and so on.
+***Module***: like PyTorch is the class you inherit from to create a layer with parameters or nest modules and so on.
 
-*NetModule*" inherits from Module. You inherit this module when you have the final network to train and do inference. It has extra functions for training and inference. You must override the method <code>Tensor\<T\> _Fwd(Tensor\<object\>)</code> for you forward pass.
+***NetModule\<T\>*** inherits from Module. You inherit this module when you have the final network to train and do inference. It has extra functions for training and inference. You must override the method
+```csharp
+Tensor<T> _Fwd(Tensor<object>)
+```
+for you forward pass.
 
-## Tensor<T>
+## Tensor\<T\>
 
 Used like python frameworks. One can use operators + - * /. Also, have functions of Mean(), Sum(), and Abs(). These functions and operator *ALL* use Auto Grad.
 
@@ -125,21 +118,19 @@ Supported operators: + - * /
 This Library is written in .NET 4.7. However I ported it with Visual Studio Community 2022 to .NET 7. It should work with Mac, Linux, and Windows.
 
 1) Install if you haven't already, .NET SDK. Open with Visual Studio Code and install the C# Dev Kit extension if you haven't already.
-
 2) Open & restore
 Open the repo’s folder in VS Code (not just a file). VS Code will detect the solution/project; when prompted, Restore to pull NuGet packages. You can also run:
-<code>
+```csharp
 dotnet restore
 dotnet build
-</code>
-
+```
 3) Press Run and Debug (or F5) and pick C#: Launch when asked—VS Code will generate the needed launch config. 
 
 ![Neural Network Flowchart Animation](imgs/NeuralNetworkFlowchartAnimation.gif)
 
 ## Example 2
 
-<code>
+```csharp
 public class Net : NetModule<float[][]>
 {
     // Norms
@@ -217,4 +208,4 @@ public class Net : NetModule<float[][]>
         GetAllModules(_modules);
     }
 }
-</code>
+```
