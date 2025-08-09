@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace MiniNet
 {
     /// <summary>
-    /// Batch Norm on the last dimention.
+    /// Batch Norm on the last dimension.
     /// Input can be float[2d or 3d]
     /// </summary>
     public class BatchNormBack : Module
@@ -88,7 +88,7 @@ namespace MiniNet
             if (x_[0].Length != _nSeq || x_[0][0].Length != _dim0)
                 throw new Exception($"Invalid input shape: got (batch, {x_[0].Length}, {x_[0][0].Length}) " +
                             $"it should be (batch, {_nSeq}, {_dim0}).");
-            // Flatten last 2 dimentions
+            // Flatten last 2 dimensions
             var x = x_.Select(s => s.SelectMany(l => l).ToArray()).ToArray();
             // Forward pass 2d
             var y = Forward(x, out ctx_);
@@ -280,7 +280,7 @@ namespace MiniNet
         }
 
         /// <summary>
-        /// Batch Norm on the last dimention.
+        /// Batch Norm on the last dimension.
         /// Input can be float[2d or 3d]
         /// </summary>
         /// <param name="nInput">In features size</param>

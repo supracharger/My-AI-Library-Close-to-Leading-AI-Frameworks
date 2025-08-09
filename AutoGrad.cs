@@ -307,7 +307,7 @@ namespace MiniNet
             /// <param name="outgrad">Not needed. Pass in gradient if you want to.</param>
             public void Backward(object outgrad = null)
             {
-                // is null: make sure node is of Singleton dimention
+                // is null: make sure node is of Singleton dimension
                 if (outgrad == null)
                 {
                     Item();
@@ -793,7 +793,7 @@ namespace MiniNet
             /// <summary>
             /// Create a Tensor of Zeros
             /// </summary>
-            /// <param name="dim">Dimention of Output Tensor</param>
+            /// <param name="dim">dimension of Output Tensor</param>
             /// <param name="requiresGrad">If Tensor needs a gradient</param>
             /// <returns>Tensor of zeros as a value</returns>
             public static Tensor<float[]> Zeros(int dim, bool requiresGrad = false)
@@ -804,8 +804,8 @@ namespace MiniNet
             /// <summary>
             /// Create a Tensor of Zeros
             /// </summary>
-            /// <param name="dim0">Dimention (0) of Output Tensor</param>
-            /// <param name="dim1">Dimention (1) of Output Tensor</param>
+            /// <param name="dim0">dimension (0) of Output Tensor</param>
+            /// <param name="dim1">dimension (1) of Output Tensor</param>
             /// <param name="requiresGrad">If Tensor needs a gradient</param>
             /// <returns>Tensor of zeros as a value</returns>
             public static Tensor<float[][]> Zeros(int dim0, int dim1, bool requiresGrad = false)
@@ -816,9 +816,9 @@ namespace MiniNet
             /// <summary>
             /// Create a Tensor of Zeros
             /// </summary>
-            /// <param name="dim0">Dimention (0) of Output Tensor</param>
-            /// <param name="dim1">Dimention (1) of Output Tensor</param>
-            /// <param name="dim2">Dimention (2) of Output Tensor</param>
+            /// <param name="dim0">dimension (0) of Output Tensor</param>
+            /// <param name="dim1">dimension (1) of Output Tensor</param>
+            /// <param name="dim2">dimension (2) of Output Tensor</param>
             /// <param name="requiresGrad">If Tensor needs a gradient</param>
             /// <returns>Tensor of zeros as a value</returns>
             public static Tensor<float[][][]> Zeros(int dim0, int dim1, int dim2, bool requiresGrad = false)
@@ -830,7 +830,7 @@ namespace MiniNet
             /// <summary>
             /// Create a Tensor of Ones
             /// </summary>
-            /// <param name="dim">Dimention of Output Tensor</param>
+            /// <param name="dim">dimension of Output Tensor</param>
             /// <param name="requiresGrad">If Tensor needs a gradient</param>
             /// <returns>Tensor of ones as a value</returns>
             public static Tensor<float[]> Ones(int dim, bool requiresGrad = false)
@@ -841,8 +841,8 @@ namespace MiniNet
             /// <summary>
             /// Create a Tensor of Ones
             /// </summary>
-            /// <param name="dim0">Dimention (0) of Output Tensor</param>
-            /// <param name="dim1">Dimention (1) of Output Tensor</param>
+            /// <param name="dim0">dimension (0) of Output Tensor</param>
+            /// <param name="dim1">dimension (1) of Output Tensor</param>
             /// <param name="requiresGrad">If Tensor needs a gradient</param>
             /// <returns>Tensor of ones as a value</returns>
             public static Tensor<float[][]> Ones(int dim0, int dim1, bool requiresGrad = false)
@@ -853,9 +853,9 @@ namespace MiniNet
             /// <summary>
             /// Create a Tensor of Ones
             /// </summary>
-            /// <param name="dim0">Dimention (0) of Output Tensor</param>
-            /// <param name="dim1">Dimention (1) of Output Tensor</param>
-            /// <param name="dim2">Dimention (2) of Output Tensor</param>
+            /// <param name="dim0">dimension (0) of Output Tensor</param>
+            /// <param name="dim1">dimension (1) of Output Tensor</param>
+            /// <param name="dim2">dimension (2) of Output Tensor</param>
             /// <param name="requiresGrad">If Tensor needs a gradient</param>
             /// <returns>Tensor of ones as a value</returns>
             public static Tensor<float[][][]> Ones(int dim0, int dim1, int dim2, bool requiresGrad = false)

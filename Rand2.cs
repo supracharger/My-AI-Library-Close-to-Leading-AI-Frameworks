@@ -65,15 +65,15 @@ namespace MiniNet
         /// <summary>
         /// Random Uniform Ranging from -1 => 1
         /// </summary>
-        /// <param name="dim">Dimention of Array</param>
+        /// <param name="dim">dimension of Array</param>
         /// <returns>Array of Random Uniform Ranging from -1 => 1</returns>
         public static float[] Randn(int dim)
             => Uniform(dim).Select(v => v * 2 - 1).ToArray();
         /// <summary>
         /// Random Uniform Ranging from -1 => 1
         /// </summary>
-        /// <param name="dim0">Dimention (0) of Output Array</param>
-        /// <param name="dim1">Dimention (1) of Output Array</param>
+        /// <param name="dim0">dimension (0) of Output Array</param>
+        /// <param name="dim1">dimension (1) of Output Array</param>
         /// <returns>Array of Random Uniform Ranging from -1 => 1</returns>
         public static float[][] Randn(int dim0, int dim1)
         {
@@ -83,9 +83,9 @@ namespace MiniNet
         /// <summary>
         /// Random Uniform Ranging from -1 => 1
         /// </summary>
-        /// <param name="dim0">Dimention (0) of Output Array</param>
-        /// <param name="dim1">Dimention (1) of Output Array</param>
-        /// <param name="dim2">Dimention (2) of Output Array</param>
+        /// <param name="dim0">dimension (0) of Output Array</param>
+        /// <param name="dim1">dimension (1) of Output Array</param>
+        /// <param name="dim2">dimension (2) of Output Array</param>
         /// <returns>Array of Random Uniform Ranging from -1 => 1</returns>
         public static float[][][] Randn(int dim0, int dim1, int dim2)
         {

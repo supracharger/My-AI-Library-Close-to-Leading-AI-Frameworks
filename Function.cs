@@ -12,36 +12,36 @@ namespace MiniNet
     public static class Function
     {
         /// <summary>
-        /// Transpose first 2 dimenstions. Can be float[2d-3d]
+        /// Transpose first 2 dimensions. Can be float[2d-3d]
         /// </summary>
         public static class T
         {
             /// <summary>
-            /// Transpose first 2 dimenstions. float[2d]
+            /// Transpose first 2 dimensions. float[2d]
             /// </summary>
             /// <param name="x">input</param>
-            /// <returns>Transposed Dimentions</returns>
+            /// <returns>Transposed dimensions</returns>
             public static Tensor<float[][]> Fwd(Tensor<float[][]> x)
             {
                 var y = Fwd(x._data, out object ctx);
                 return x.AddNode(y, ctx, Bck, false);
             }
             /// <summary>
-            /// Transpose first 2 dimenstions. float[3d]
+            /// Transpose first 2 dimensions. float[3d]
             /// </summary>
             /// <param name="x">input</param>
-            /// <returns>Transposed Dimentions</returns>
+            /// <returns>Transposed dimensions</returns>
             public static Tensor<float[][][]> Fwd(Tensor<float[][][]> x)
             {
                 var y = Fwd(x._data, out object ctx);
                 return x.AddNode(y, ctx, Bck_3dim, false);
             }
             /// <summary>
-            /// Transpose first 2 dimenstions.
+            /// Transpose first 2 dimensions.
             /// </summary>
             /// <param name="values">input</param>
             /// <param name="ctx">Context for backwards pass</param>
-            /// <returns>Transposed Dimentions</returns>
+            /// <returns>Transposed dimensions</returns>
             public static S[][] Fwd<S>(S[][] values, out object ctx)
             {
                 var y = Utilz.TransposeArray(values);
@@ -91,7 +91,7 @@ namespace MiniNet
         }
 
         /// <summary>
-        /// Reshape Dimensions to another set of Dimentions
+        /// Reshape Dimensions to another set of dimensions
         /// </summary>
         public static class Reshape
         {
@@ -99,8 +99,8 @@ namespace MiniNet
             /// float[1d] -> float[2d]
             /// </summary>
             /// <param name="x">values to Reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
             /// <returns>float[2d]</returns>
             public static Tensor<float[][]> Fwd(Tensor<float[]> x, int dim0, int dim1)
             {
@@ -111,7 +111,7 @@ namespace MiniNet
             /// float[2d] -> float[1d]
             /// </summary>
             /// <param name="x">values to reshape</param>
-            /// <param name="dim0">Dimention</param>
+            /// <param name="dim0">dimension</param>
             /// <returns>float[1d]</returns>
             public static Tensor<float[]> Fwd(Tensor<float[][]> x, int dim0)
             {
@@ -122,9 +122,9 @@ namespace MiniNet
             /// float[2d] -> float[3d]
             /// </summary>
             /// <param name="x">values to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="dim2">Third dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="dim2">Third dimension</param>
             /// <returns>float[3d]</returns>
             public static Tensor<float[][][]> Fwd(Tensor<float[][]> x, int dim0, int dim1, int dim2)
             {
@@ -135,8 +135,8 @@ namespace MiniNet
             /// float[3d] -> float[2d]
             /// </summary>
             /// <param name="x">values to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
             /// <returns>float[2d]</returns>
             public static Tensor<float[][]> Fwd(Tensor<float[][][]> x, int dim0, int dim1)
             {
@@ -147,10 +147,10 @@ namespace MiniNet
             /// float[3d] -> float[4d]
             /// </summary>
             /// <param name="x">values to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="dim2">Third dimention</param>
-            /// <param name="dim3">Forth dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="dim2">Third dimension</param>
+            /// <param name="dim3">Forth dimension</param>
             /// <returns>float[4d]</returns>
             public static Tensor<float[][][][]> Fwd(Tensor<float[][][]> x, int dim0, int dim1, int dim2, int dim3)
             {
@@ -161,9 +161,9 @@ namespace MiniNet
             /// float[4d] -> float[3d]
             /// </summary>
             /// <param name="x">values to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="dim2">Third dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="dim2">Third dimension</param>
             /// <returns>float[3d]</returns>
             public static Tensor<float[][][]> Fwd(Tensor<float[][][][]> x, int dim0, int dim1, int dim2)
             {
@@ -176,8 +176,8 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of series</typeparam>
             /// <param name="series">values to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>float[2d]</returns>
             public static T[][] Fwd<T>(T[] series, int dim0, int dim1, out object ctx)
@@ -191,7 +191,7 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of series</typeparam>
             /// <param name="series">values to reshape</param>
-            /// <param name="dim">Dimention</param>
+            /// <param name="dim">dimension</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>float[1d]</returns>
             public static T[] Fwd<T>(T[][] series, int dim, out object ctx)
@@ -205,9 +205,9 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of series</typeparam>
             /// <param name="series">series to reshape</param>
-            /// <param name="dim0">First Dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="dim2">Third dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="dim2">Third dimension</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>float[3d]</returns>
             public static T[][][] Fwd<T>(T[][] series, int dim0, int dim1, int dim2, out object ctx)
@@ -221,9 +221,9 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of series</typeparam>
             /// <param name="series">Series to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="ctx">Third dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="ctx">Third dimension</param>
             /// <returns>float[2d]</returns>
             public static T[][] Fwd<T>(T[][][] series, int dim0, int dim1, out object ctx)
             {
@@ -237,10 +237,10 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of Series</typeparam>
             /// <param name="series">Series to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="dim2">Third dimention</param>
-            /// <param name="dim3">Fourth dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="dim2">Third dimension</param>
+            /// <param name="dim3">Fourth dimension</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>float[4d]</returns>
             public static T[][][][] Fwd<T>(T[][][] series, int dim0, int dim1, int dim2, int dim3, out object ctx)
@@ -255,9 +255,9 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of series</typeparam>
             /// <param name="series">Series to reshape</param>
-            /// <param name="dim0">First dimention</param>
-            /// <param name="dim1">Second dimention</param>
-            /// <param name="dim2">Third dimention</param>
+            /// <param name="dim0">First dimension</param>
+            /// <param name="dim1">Second dimension</param>
+            /// <param name="dim2">Third dimension</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>float[3d]</returns>
             public static T[][][] Fwd<T>(T[][][][] series, int dim0, int dim1, int dim2, out object ctx)
@@ -748,16 +748,16 @@ namespace MiniNet
         }
 
         /// <summary>
-        /// Takes the first number of values on a dimention. The number of values is of size 'take.'
+        /// Takes the first number of values on a dimension. The number of values is of size 'take.'
         /// Inputs can be float[2d - 3d]
         /// </summary>
         public static class Take
         {
             /// <summary>
-            /// Takes the first number of values on a dimention. The number of values is of size 'take.'
+            /// Takes the first number of values on a dimension. The number of values is of size 'take.'
             /// </summary>
             /// <param name="x">Series to modify</param>
-            /// <param name="take">The size to keep on dimention</param>
+            /// <param name="take">The size to keep on dimension</param>
             /// <param name="dim">The dim the operation works on</param>
             /// <returns>Shape is the same except on dim: length is size 'take'</returns>
             public static Tensor<float[][]> Fwd(Tensor<float[][]> x, int take, int dim)
@@ -798,10 +798,10 @@ namespace MiniNet
                 return x.AddNode(y, ctx, bckF, false);
             }
             /// <summary>
-            /// Takes the first number of values on a dimention. The number of values is of size 'take.'
+            /// Takes the first number of values on a dimension. The number of values is of size 'take.'
             /// </summary>
             /// <param name="x">Series to modify</param>
-            /// <param name="take">The size to keep on dimention</param>
+            /// <param name="take">The size to keep on dimension</param>
             /// <param name="dim">The dim the operation works on</param>
             /// <returns>Shape is the same except on dim: length is size 'take'</returns>
             public static Tensor<float[][][]> Fwd(Tensor<float[][][]> x, int take, int dim)
@@ -854,11 +854,11 @@ namespace MiniNet
                 return x.AddNode(y, ctx, bckF, false);
             }
             /// <summary>
-            /// Takes the first number of values on a dimention. The number of values is of size 'take.'
+            /// Takes the first number of values on a dimension. The number of values is of size 'take.'
             /// </summary>
             /// <typeparam name="T">Type of values.</typeparam>
             /// <param name="values">Series to modify</param>
-            /// <param name="take">The size to keep on dimention</param>
+            /// <param name="take">The size to keep on dimension</param>
             /// <param name="dim">The dim the operation works on</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>Shape is the same except on dim: length is size 'take'</returns>
@@ -901,11 +901,11 @@ namespace MiniNet
                     throw new Exception("dim < 0 || dim > 2");
             }
             /// <summary>
-            /// float[2d]: Takes the first number of values on a dimention. The number of values is of size 'take.'
+            /// float[2d]: Takes the first number of values on a dimension. The number of values is of size 'take.'
             /// </summary>
             /// <typeparam name="T">Type of values.</typeparam>
             /// <param name="values">Series to modify</param>
-            /// <param name="take">The size to keep on dimention</param>
+            /// <param name="take">The size to keep on dimension</param>
             /// <param name="dim">The dim the operation works on</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>Shape is the same except on dim: length is size 'take'</returns>
@@ -1111,7 +1111,7 @@ namespace MiniNet
             /// Tensor(float[3d]): Flattens two dimensions into one.
             /// </summary>
             /// <param name="x">Series to flatten</param>
-            /// <param name="dim">Dimention index to flatten on</param>
+            /// <param name="dim">dimension index to flatten on</param>
             /// <returns>Tensor(float[2d])</returns>
             public static Tensor<float[][]> Fwd(Tensor<float[][][]> x, int dim)
             {
@@ -1136,7 +1136,7 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of 'values'</typeparam>
             /// <param name="values">Series to flatten</param>
-            /// <param name="dim">Dimention index to flatten on</param>
+            /// <param name="dim">dimension index to flatten on</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>T[2d]</returns>
             public static T[][] Fwd<T>(T[][][] values, int dim, out object ctx)
@@ -1148,7 +1148,7 @@ namespace MiniNet
                 else throw new Exception("dim < 0 || dim > 1");
             }
             /// <summary>
-            /// T[3d]: On dimention index 0: Flattens two dimensions into one.
+            /// T[3d]: On dimension index 0: Flattens two dimensions into one.
             /// </summary>
             /// <typeparam name="T">Type of 'values'</typeparam>
             /// <param name="values">Series to flatten</param>
@@ -1160,7 +1160,7 @@ namespace MiniNet
                 return values.SelectMany(l => l).ToArray();
             }
             /// <summary>
-            /// T[3d]: On dimention index 1: Flattens two dimensions into one.
+            /// T[3d]: On dimension index 1: Flattens two dimensions into one.
             /// </summary>
             /// <typeparam name="T">Type of 'values'</typeparam>
             /// <param name="values">Series to flatten</param>
@@ -1292,7 +1292,7 @@ namespace MiniNet
             /// <summary>
             /// Concatenates Tensors on specific dimension.
             /// </summary>
-            /// <param name="dim">The dimention to concatenate Tensors on</param>
+            /// <param name="dim">The dimension to concatenate Tensors on</param>
             /// <param name="nodes">The Tensors to concatenate</param>
             /// <returns>Same shape as single node except on 'dim' the length is summed.</returns>
             public static Tensor<float[][]> Fwd(int dim, params Tensor<float[][]>[] nodes)
@@ -1331,7 +1331,7 @@ namespace MiniNet
             /// <summary>
             /// Concatenates Tensors on specific dimension.
             /// </summary>
-            /// <param name="dim">The dimention to concatenate Tensors on</param>
+            /// <param name="dim">The dimension to concatenate Tensors on</param>
             /// <param name="nodes">The Tensors to concatenate</param>
             /// <returns>Same shape as single node except on 'dim' the length is summed.</returns>
             public static Tensor<float[][][]> Fwd(int dim, params Tensor<float[][][]>[] nodes)
@@ -1378,7 +1378,7 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of 'nodes'</typeparam>
             /// <param name="nodes">The Arrays to concatenate</param>
-            /// <param name="dim">The dimention to concatenate Arrays on</param>
+            /// <param name="dim">The dimension to concatenate Arrays on</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <param name="dm">Do NOT modify</param>
             /// <returns>Same shape as single array except on 'dim' the length is summed.</returns>
@@ -1516,7 +1516,7 @@ namespace MiniNet
             }
 
             /// <summary>
-            /// Backwards Pass on dimention index (0)
+            /// Backwards Pass on dimension index (0)
             /// </summary>
             /// <typeparam name="T">Type of grad</typeparam>
             /// <param name="grad">Output Gradient</param>
@@ -1528,7 +1528,7 @@ namespace MiniNet
                 // Validate Context size
                 if (ctx.Length < 6)
                     throw new Exception("This is not the right function for backward.");
-                // Make sure it is the same dimention as forward pass
+                // Make sure it is the same dimension as forward pass
                 if (ctx[0] != 0)
                     throw new Exception($"You should be using Bck_d{ctx[0]}() backward function.");
                 // Validate Shape
@@ -1539,7 +1539,7 @@ namespace MiniNet
                 return Bck_sub(grad, ctx.Skip(4).ToArray());
             }
             /// <summary>
-            /// Backwards Pass on dimention index (1)
+            /// Backwards Pass on dimension index (1)
             /// </summary>
             /// <typeparam name="T">Type of grad</typeparam>
             /// <param name="grad">Output Gradient</param>
@@ -1551,7 +1551,7 @@ namespace MiniNet
                 // Validate Context size
                 if (ctx.Length < 6)
                     throw new Exception("This is not the right function for backward.");
-                // Make sure it is the same dimention as forward pass
+                // Make sure it is the same dimension as forward pass
                 if (ctx[0] != 1)
                     throw new Exception($"You should be using Bck_d{ctx[0]}() backward function.");
                 // Validate Shape
@@ -1573,7 +1573,7 @@ namespace MiniNet
                 return ingrad;
             }
             /// <summary>
-            /// Backwards Pass on dimention index (2)
+            /// Backwards Pass on dimension index (2)
             /// </summary>
             /// <typeparam name="T">Type of grad</typeparam>
             /// <param name="grad">Output Gradient</param>
@@ -1585,7 +1585,7 @@ namespace MiniNet
                 // Validate Context size
                 if (ctx.Length < 6)
                     throw new Exception("This is not the right function for backward.");
-                // Make sure it is the same dimention as forward pass
+                // Make sure it is the same dimension as forward pass
                 if (ctx[0] != 2)
                     throw new Exception($"You should be using Bck_d{ctx[0]}() backward function.");
                 // Validate Shape
@@ -1699,13 +1699,13 @@ namespace MiniNet
         }
         
         /// <summary>
-        /// Repeats values on Specific Dimentions.
+        /// Repeats values on Specific dimensions.
         /// Inputs can be float[1d - 4d]
         /// </summary>
         public static class Repeat
         {
             /// <summary>
-            /// Repeats Tensor on Specific Dimention
+            /// Repeats Tensor on Specific dimension
             /// </summary>
             /// <param name="x">Tensor to repeat</param>
             /// <param name="dim0">Repeat multiplicative size</param>
@@ -1716,11 +1716,11 @@ namespace MiniNet
                 return x.AddNode(y, ctx, Bck_1d, false);
             }
             /// <summary>
-            /// Repeats Tensor on Specific Dimentions
+            /// Repeats Tensor on Specific dimensions
             /// </summary>
             /// <param name="x">Tensor to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
-            /// <param name="dim1">Dimention 1: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
+            /// <param name="dim1">dimension 1: Repeat multiplicative size</param>
             /// <returns>Shape[x.length * dim0][x[0].length * dim1]</returns>
             public static Tensor<float[][]> Fwd(Tensor<float[][]> x, int dim0, int dim1 = 1)
             {
@@ -1728,12 +1728,12 @@ namespace MiniNet
                 return x.AddNode(y, ctx, Bck_2d, false);
             }
             /// <summary>
-            /// Repeats Tensor on Specific Dimentions
+            /// Repeats Tensor on Specific dimensions
             /// </summary>
             /// <param name="x">Tensor to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
-            /// <param name="dim1">Dimention 1: Repeat multiplicative size</param>
-            /// <param name="dim2">Dimention 2: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
+            /// <param name="dim1">dimension 1: Repeat multiplicative size</param>
+            /// <param name="dim2">dimension 2: Repeat multiplicative size</param>
             /// <returns>Shape[x.length*dim0][x[0].length*dim1][x[0][0].length*dim2]</returns>
             public static Tensor<float[][][]> Fwd(Tensor<float[][][]> x, int dim0, int dim1 = 1, int dim2 = 1)
             {
@@ -1741,13 +1741,13 @@ namespace MiniNet
                 return x.AddNode(y, ctx, Bck_3d, false);
             }
             /// <summary>
-            /// Repeats Tensor on Specific Dimentions
+            /// Repeats Tensor on Specific dimensions
             /// </summary>
             /// <param name="x">Tensor to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
-            /// <param name="dim1">Dimention 1: Repeat multiplicative size</param>
-            /// <param name="dim2">Dimention 2: Repeat multiplicative size</param>
-            /// <param name="dim3">Dimention 3: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
+            /// <param name="dim1">dimension 1: Repeat multiplicative size</param>
+            /// <param name="dim2">dimension 2: Repeat multiplicative size</param>
+            /// <param name="dim3">dimension 3: Repeat multiplicative size</param>
             /// <returns>Shape[x.length*dim0][x[0].length*dim1][x[0][0].length*dim2][x[0][0][0].length*dim3]</returns>
             public static Tensor<float[][][][]> Fwd(Tensor<float[][][][]> x, int dim0, int dim1 = 1, int dim2 = 1, int dim3 = 1)
             {
@@ -1755,11 +1755,11 @@ namespace MiniNet
                 return x.AddNode(y, ctx, Bck_4d, false);
             }
             /// <summary>
-            /// Repeats Array on Specific Dimentions
+            /// Repeats Array on Specific dimensions
             /// </summary>
             /// <param name="values">Array to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
-            /// <param name="dim1">Dimention 1: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
+            /// <param name="dim1">dimension 1: Repeat multiplicative size</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>Shape[x.length * dim0][x[0].length * dim1]</returns>
             public static T[][] Fwd<T>(T[][] values, int dim0, int dim1, out object ctx)
@@ -1774,12 +1774,12 @@ namespace MiniNet
                 return FwdSub(values, dim0, dim1);
             }
             /// <summary>
-            /// Repeats Array on Specific Dimentions
+            /// Repeats Array on Specific dimensions
             /// </summary>
             /// <param name="values">Array to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
-            /// <param name="dim1">Dimention 1: Repeat multiplicative size</param>
-            /// <param name="dim2">Dimention 2: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
+            /// <param name="dim1">dimension 1: Repeat multiplicative size</param>
+            /// <param name="dim2">dimension 2: Repeat multiplicative size</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>Shape[x.length*dim0][x[0].length*dim1][x[0][0].length*dim2]</returns>
             public static T[][][] Fwd<T>(T[][][] values, int dim0, int dim1, int dim2, out object ctx)
@@ -1794,13 +1794,13 @@ namespace MiniNet
                 return FwdSub(values, dim0, dim1, dim2);
             }
             /// <summary>
-            /// Repeats Array on Specific Dimentions
+            /// Repeats Array on Specific dimensions
             /// </summary>
             /// <param name="values">Array to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
-            /// <param name="dim1">Dimention 1: Repeat multiplicative size</param>
-            /// <param name="dim2">Dimention 2: Repeat multiplicative size</param>
-            /// <param name="dim3">Dimention 3: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
+            /// <param name="dim1">dimension 1: Repeat multiplicative size</param>
+            /// <param name="dim2">dimension 2: Repeat multiplicative size</param>
+            /// <param name="dim3">dimension 3: Repeat multiplicative size</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>Shape[x.length*dim0][x[0].length*dim1][x[0][0].length*dim2][x[0][0][0].length*dim3]</returns>
             public static T[][][][] Fwd<T>(T[][][][] values, int dim0, int dim1, int dim2, int dim3, out object ctx)
@@ -1815,10 +1815,10 @@ namespace MiniNet
                 return FwdSub(values, dim0, dim1, dim2, dim3);
             }
             /// <summary>
-            /// Repeats Array on Specific Dimention
+            /// Repeats Array on Specific dimension
             /// </summary>
             /// <param name="values">Array to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat multiplicative size</param>
+            /// <param name="dim0">dimension 0: Repeat multiplicative size</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <returns>Shape[x.length*dim0]</returns>
             public static T[] Fwd<T>(T[] values, int dim0, out object ctx)
@@ -2007,7 +2007,7 @@ namespace MiniNet
             {
                 // No need to calculate
                 if (dim0 == 1) return values;
-                // New Dimention size
+                // New dimension size
                 var y = new T[values.Length * dim0];
                 // Distributes values evenly
                 for (int i = 0; i < values.Length; i++)
@@ -2025,19 +2025,19 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of 'values'</typeparam>
             /// <param name="values">Series to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat size</param>
-            /// <param name="dim1">Dimention 1: Repeat size</param>
+            /// <param name="dim0">dimension 0: Repeat size</param>
+            /// <param name="dim1">dimension 1: Repeat size</param>
             /// <returns>Shape[values.length*dim0][values[0].length*dim1]</returns>
             static T[][] FwdSub<T>(T[][] values, int dim0, int dim1)
             {
-                // Dimention size without repeat on this dimention
+                // dimension size without repeat on this dimension
                 var vals = new T[values.Length][];
                 // Get values
                 for (int i = 0; i < values.Length; i++)
                     vals[i] = FwdSub(values[i], dim1);
                 // No need to calculate
                 if (dim0 == 1) return vals;
-                // New Dimention size
+                // New dimension size
                 var y = new T[values.Length * dim0][];
                 // Distributes values evenly
                 for (int i = 0; i < values.Length; i++)
@@ -2054,20 +2054,20 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of 'values'</typeparam>
             /// <param name="values">Series to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat size</param>
-            /// <param name="dim1">Dimention 1: Repeat size</param>
-            /// <param name="dim2">Dimention 2: Repeat size</param>
+            /// <param name="dim0">dimension 0: Repeat size</param>
+            /// <param name="dim1">dimension 1: Repeat size</param>
+            /// <param name="dim2">dimension 2: Repeat size</param>
             /// <returns>Shape[values.length*dim0][values[0].length*dim1][values[0][0].length*dim2]</returns>
             static T[][][] FwdSub<T>(T[][][] values, int dim0, int dim1, int dim2)
             {
-                // Dimention size without repeat on this dimention
+                // dimension size without repeat on this dimension
                 var vals = new T[values.Length][][];
                 // Get values
                 for (int i = 0; i < values.Length; i++)
                     vals[i] = FwdSub(values[i], dim1, dim2);
                 // No need to calculate
                 if (dim0 == 1) return vals;
-                // New Dimention size
+                // New dimension size
                 var y = new T[values.Length * dim0][][];
                 // Distributes values evenly
                 for (int i = 0; i < values.Length; i++)
@@ -2084,21 +2084,21 @@ namespace MiniNet
             /// </summary>
             /// <typeparam name="T">Type of 'values'</typeparam>
             /// <param name="values">Series to repeat</param>
-            /// <param name="dim0">Dimention 0: Repeat size</param>
-            /// <param name="dim1">Dimention 1: Repeat size</param>
-            /// <param name="dim2">Dimention 2: Repeat size</param>
-            /// <param name="dim3">Dimention 3: Repeat size</param>
+            /// <param name="dim0">dimension 0: Repeat size</param>
+            /// <param name="dim1">dimension 1: Repeat size</param>
+            /// <param name="dim2">dimension 2: Repeat size</param>
+            /// <param name="dim3">dimension 3: Repeat size</param>
             /// <returns>Shape[values.length*dim0][values[0].length*dim1][values[0][0].length*dim2][values[0][0][0].length*dim3]</returns>
             static T[][][][] FwdSub<T>(T[][][][] values, int dim0, int dim1, int dim2, int dim3)
             {
-                // Dimention size without repeat on this dimention
+                // dimension size without repeat on this dimension
                 var vals = new T[values.Length][][][];
                 // Get values
                 for (int i = 0; i < values.Length; i++)
                     vals[i] = FwdSub(values[i], dim1, dim2, dim3);
                 // No need to calculate
                 if (dim0 == 1) return vals;
-                // New Dimention size
+                // New dimension size
                 var y = new T[values.Length * dim0][][][];
                 // Distributes values evenly
                 for (int i = 0; i < values.Length; i++)
@@ -2138,8 +2138,8 @@ namespace MiniNet
             /// <param name="ingrad">Input Gradient</param>
             /// <param name="len0">Origonal Length 0</param>
             /// <param name="len1">Origonal Length 1</param>
-            /// <param name="dim0">Dimention 0: Repeat Size</param>
-            /// <param name="dim1">Dimention 1: Repeat Size</param>
+            /// <param name="dim0">dimension 0: Repeat Size</param>
+            /// <param name="dim1">dimension 1: Repeat Size</param>
             static void BckSub(float[][] grad, float[][] ingrad, int len0, int len1, int dim0, int dim1)
             {
                 // Loop origonal input len
@@ -2160,9 +2160,9 @@ namespace MiniNet
             /// <param name="len0">Origonal Length 0</param>
             /// <param name="len1">Origonal Length 1</param>
             /// <param name="len2">Origonal Length 2</param>
-            /// <param name="dim0">Dimention 0: Repeat Size</param>
-            /// <param name="dim1">Dimention 1: Repeat Size</param>
-            /// <param name="dim2">Dimention 2: Repeat Size</param>
+            /// <param name="dim0">dimension 0: Repeat Size</param>
+            /// <param name="dim1">dimension 1: Repeat Size</param>
+            /// <param name="dim2">dimension 2: Repeat Size</param>
             static void BckSub(float[][][] grad, float[][][] ingrad, int len0, int len1, int len2, int dim0, int dim1, int dim2)
             {
                 // Loop origonal input len
@@ -2184,10 +2184,10 @@ namespace MiniNet
             /// <param name="len1">Origonal Length 1</param>
             /// <param name="len2">Origonal Length 2</param>
             /// <param name="len3">Origonal Length 3</param>
-            /// <param name="dim0">Dimention 0: Repeat Size</param>
-            /// <param name="dim1">Dimention 1: Repeat Size</param>
-            /// <param name="dim2">Dimention 2: Repeat Size</param>
-            /// <param name="dim3">Dimention 3: Repeat Size</param>
+            /// <param name="dim0">dimension 0: Repeat Size</param>
+            /// <param name="dim1">dimension 1: Repeat Size</param>
+            /// <param name="dim2">dimension 2: Repeat Size</param>
+            /// <param name="dim3">dimension 3: Repeat Size</param>
             static void BckSub(float[][][][] grad, float[][][][] ingrad, int len0, int len1, int len2, int len3, int dim0, int dim1, int dim2, int dim3)
             {
                 // Loop origonal input len
@@ -2203,18 +2203,18 @@ namespace MiniNet
         }
 
         /// <summary>
-        /// Splits values on a specific dimention to multiple values.
+        /// Splits values on a specific dimension to multiple values.
         /// Inputs: float[1d - 4d]
         /// </summary>
         public static class Split
         {
             /// <summary>
-            /// Splits values on a specific dimention to multiple values.
+            /// Splits values on a specific dimension to multiple values.
             /// </summary>
             /// <param name="x">Series to split</param>
-            /// <param name="dim">Dimention index to split on</param>
+            /// <param name="dim">dimension index to split on</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns>
+            /// <returns>Splitted values on certain dimension</returns>
             public static NodeArray<float[][], float[][]> Fwd(Tensor<float[][]> x, int dim, params int[] lengths)
             {
                 object ctx;
@@ -2242,12 +2242,12 @@ namespace MiniNet
                 return x.AddBranch(ctx, bckF, false, y);
             }
             /// <summary>
-            /// Splits values on a specific dimention to multiple values.
+            /// Splits values on a specific dimension to multiple values.
             /// </summary>
             /// <param name="x">Series to split</param>
-            /// <param name="dim">Dimention index to split on</param>
+            /// <param name="dim">dimension index to split on</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns>
+            /// <returns>Splitted values on certain dimension</returns>
             public static NodeArray<float[][][], float[][][]> Fwd(Tensor<float[][][]> x, int dim, params int[] lengths)
             {
                 object ctx;
@@ -2283,12 +2283,12 @@ namespace MiniNet
                 return x.AddBranch(ctx, bckF, false, y);
             }
             /// <summary>
-            /// Splits values on a specific dimention to multiple values.
+            /// Splits values on a specific dimension to multiple values.
             /// </summary>
             /// <param name="x">Series to split</param>
-            /// <param name="dim">Dimention index to split on</param>
+            /// <param name="dim">dimension index to split on</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns>
+            /// <returns>Splitted values on certain dimension</returns>
             public static NodeArray<float[][][][], float[][][][]> Fwd(Tensor<float[][][][]> x, int dim, params int[] lengths)
             {
                 object ctx;
@@ -2328,13 +2328,13 @@ namespace MiniNet
             }
 
             /// <summary>
-            /// Splits values on a specific dimention to multiple values.
+            /// Splits values on a specific dimension to multiple values.
             /// </summary>
             /// <param name="values">Series to split</param>
-            /// <param name="dim">Dimention index to split on</param>
+            /// <param name="dim">dimension index to split on</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns>
+            /// <returns>Splitted values on certain dimension</returns>
             public static T[][][] Fwd<T>(T[][] values, int dim, out object ctx, params int[] lengths)
             {
                 // dim1
@@ -2346,13 +2346,13 @@ namespace MiniNet
                 throw new Exception("dim < 0 || dim > 1");
             }
             /// <summary>
-            /// Splits values on a specific dimention to multiple values.
+            /// Splits values on a specific dimension to multiple values.
             /// </summary>
             /// <param name="values">Series to split</param>
-            /// <param name="dim">Dimention index to split on</param>
+            /// <param name="dim">dimension index to split on</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns>
+            /// <returns>Splitted values on certain dimension</returns>
             public static T[][][][] Fwd<T>(T[][][] values, int dim, out object ctx, params int[] lengths)
             {
                 // dim1
@@ -2368,12 +2368,12 @@ namespace MiniNet
             }
 
             /// <summary>
-            /// Splits values on dimention index (0) to multiple values.
+            /// Splits values on dimension index (0) to multiple values.
             /// </summary>
             /// <param name="values">Series to split</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns
+            /// <returns>Splitted values on certain dimension</returns
             public static T[][][] Fwd_dim0<T>(T[][] values, out object ctx, params int[] lengths)
             {
                 // Validate
@@ -2392,12 +2392,12 @@ namespace MiniNet
                 return y;
             }
             /// <summary>
-            /// Splits values on dimention index (1) to multiple values.
+            /// Splits values on dimension index (1) to multiple values.
             /// </summary>
             /// <param name="values">Series to split</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns
+            /// <returns>Splitted values on certain dimension</returns
             public static T[][][] Fwd_dim1<T>(T[][] values, out object ctx, params int[] lengths)
             {
                 // Validate
@@ -2414,7 +2414,7 @@ namespace MiniNet
                 for (int b = 0; b < values.Length; b++)
                 {
                     var o = Fwd_sub(values[b], lengths);
-                    // y first dimention is the number of splits
+                    // y first dimension is the number of splits
                     for (int i = 0; i < lengths.Length; i++)
                         y[i][b] = o[i];
                 }
@@ -2424,12 +2424,12 @@ namespace MiniNet
                 return y;
             }
             /// <summary>
-            /// Splits values on dimention index (2) to multiple values.
+            /// Splits values on dimension index (2) to multiple values.
             /// </summary>
             /// <param name="values">Series to split</param>
             /// <param name="ctx">Context for backwards pass</param>
             /// <param name="lengths">The length for each splitted value</param>
-            /// <returns>Splitted values on certain dimention</returns
+            /// <returns>Splitted values on certain dimension</returns
             public static T[][][][] Fwd_dim2<T>(T[][][] values, out object ctx, params int[] lengths)
             {
                 // Validate
@@ -2451,7 +2451,7 @@ namespace MiniNet
                     for (int j = 0; j < dim1; j++)
                     {
                         var o = Fwd_sub(vb[j], lengths);
-                        // y first dimention is the number of splits
+                        // y first dimension is the number of splits
                         for (int i = 0; i < lengths.Length; i++)
                             y[i][b][j] = o[i];
                     }
@@ -2632,7 +2632,7 @@ namespace MiniNet
             }
             
             /// <summary>
-            /// Inside Backwards Function on dimention index (0)
+            /// Inside Backwards Function on dimension index (0)
             /// </summary>
             /// <typeparam name="T">Type of 'grad'</typeparam>
             /// <param name="grad">Output Gradient</param>
@@ -2668,7 +2668,7 @@ namespace MiniNet
                 return grad.SelectMany(g => g).ToArray();
             }
             /// <summary>
-            /// Inside Backwards Function on dimention index (1)
+            /// Inside Backwards Function on dimension index (1)
             /// </summary>
             /// <typeparam name="T">Type of 'grad'</typeparam>
             /// <param name="grad">Output Gradient</param>
@@ -2705,7 +2705,7 @@ namespace MiniNet
                         grad.SelectMany(g => g[b]).ToArray()).ToArray();
             }
             /// <summary>
-            /// Inside Backwards Function on dimention index (2)
+            /// Inside Backwards Function on dimension index (2)
             /// </summary>
             /// <typeparam name="T">Type of 'grad'</typeparam>
             /// <param name="grad">Output Gradient</param>

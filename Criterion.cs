@@ -719,7 +719,7 @@ namespace MiniNet
         /// Gets Errors from Gradient Values
         /// </summary>
         /// <param name="grad">The Gradient</param>
-        /// <returns>Errors for each Gradient at dimention (0)</returns>
+        /// <returns>Errors for each Gradient at dimension (0)</returns>
         public static List<float> GetError(float[] grad)
         {
             var errors = new List<float>(grad.Length);
@@ -731,7 +731,7 @@ namespace MiniNet
         /// Gets Errors from Gradient Values
         /// </summary>
         /// <param name="grad">The Gradient</param>
-        /// <returns>Errors for each Gradient at dimention (0)</returns>
+        /// <returns>Errors for each Gradient at dimension (0)</returns>
         public static List<float> GetError(float[][] grad)
         {
             var errors = new List<float>(grad.Length);
@@ -743,7 +743,7 @@ namespace MiniNet
         /// Gets Errors from Gradient Values
         /// </summary>
         /// <param name="grad">The Gradient</param>
-        /// <returns>Errors for each Gradient at dimention (0)</returns>
+        /// <returns>Errors for each Gradient at dimension (0)</returns>
         public static List<float> GetError(float[][][] grad)
         {
             var errors = new List<float>(grad.Length);
@@ -755,7 +755,7 @@ namespace MiniNet
         /// Gets Errors from Gradient Values
         /// </summary>
         /// <param name="grad">The Gradient</param>
-        /// <returns>Errors for each Gradient at dimention (0)</returns>
+        /// <returns>Errors for each Gradient at dimension (0)</returns>
         public static List<float> GetError(float[][][][] grad)
         {
             var errors = new List<float>(grad.Length);

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
     static class Utilz
     {
         /// <summary>
-        /// Transpose first 2 dimentions
+        /// Transpose first 2 dimensions
         /// </summary>
         /// <typeparam name="T">Type of source</typeparam>
         /// <param name="source">Values to transpose</param>
@@ -20,7 +20,7 @@ using System.Threading.Tasks;
             source.SelectMany(inner => inner.Select((item, index) => new { item, index }))
             .GroupBy(i => i.index, i => i.item).Select(g => g.ToList());
         /// <summary>
-        /// Transpose Array first 2 dimentions
+        /// Transpose Array first 2 dimensions
         /// </summary>
         /// <typeparam name="T">Type of source</typeparam>
         /// <param name="source">Values to transpose</param>
@@ -40,7 +40,7 @@ using System.Threading.Tasks;
         }
 
         /// <summary>
-        /// Transpose Array first 2 dimentions
+        /// Transpose Array first 2 dimensions
         /// </summary>
         /// <typeparam name="T">Type of source</typeparam>
         /// <param name="source">Values to transpose</param>
@@ -60,12 +60,12 @@ using System.Threading.Tasks;
         }
 
         /// <summary>
-        /// Transpose Dimentions on dim0 & dim1
+        /// Transpose dimensions on dim0 & dim1
         /// </summary>
         /// <typeparam name="T">Type of values</typeparam>
         /// <param name="values">Values to transpose</param>
-        /// <param name="dim0">First Dimention to transpose</param>
-        /// <param name="dim1">Second Dimention to transpose</param>
+        /// <param name="dim0">First dimension to transpose</param>
+        /// <param name="dim1">Second dimension to transpose</param>
         /// <returns>Tranposed Array</returns>
         public static T[][][] Transpose<T>(T[][][] values, int dim0, int dim1)
         {
@@ -73,7 +73,7 @@ using System.Threading.Tasks;
             if (new[] { dim0, dim1 }.Any(d => d < 0 || d > 2))
                 throw new IndexOutOfRangeException("Dimensions are out of range.");
             if (dim0 == dim1)
-                throw new Exception("Dimentions are the same.");
+                throw new Exception("dimensions are the same.");
             // Make sure in sorted order
             if (dim0 > dim1)
             {
@@ -91,12 +91,12 @@ using System.Threading.Tasks;
             return TransposeSub(values, dim0, dim1);
         }
         /// <summary>
-        /// Sub Function (No Validation): Transpose Dimentions on dim0 & dim1
+        /// Sub Function (No Validation): Transpose dimensions on dim0 & dim1
         /// </summary>
         /// <typeparam name="T">Type of values</typeparam>
         /// <param name="values">Values to transpose</param>
-        /// <param name="dim0">First Dimention to transpose</param>
-        /// <param name="dim1">Second Dimention to transpose</param>
+        /// <param name="dim0">First dimension to transpose</param>
+        /// <param name="dim1">Second dimension to transpose</param>
         /// <returns>Tranposed Array</returns>
         static T[][][] TransposeSub<T>(T[][][] values, int dim0, int dim1)
         {
@@ -134,12 +134,12 @@ using System.Threading.Tasks;
             }
         }
         /// <summary>
-        /// Transpose Dimentions on dim0 & dim1
+        /// Transpose dimensions on dim0 & dim1
         /// </summary>
         /// <typeparam name="T">Type of values</typeparam>
         /// <param name="values">Values to transpose</param>
-        /// <param name="dim0">First Dimention to transpose</param>
-        /// <param name="dim1">Second Dimention to transpose</param>
+        /// <param name="dim0">First dimension to transpose</param>
+        /// <param name="dim1">Second dimension to transpose</param>
         /// <returns>Tranposed Array</returns>
         public static T[][][][] Transpose<T>(T[][][][] values, int dim0, int dim1)
         {
@@ -147,7 +147,7 @@ using System.Threading.Tasks;
             if (new[] { dim0, dim1 }.Any(d => d < 0 || d > 3))
                 throw new IndexOutOfRangeException("Dimensions are out of range.");
             if (dim0 == dim1)
-                throw new Exception("Dimentions are the same.");
+                throw new Exception("dimensions are the same.");
             // Make sure in sorted order
             if (dim0 > dim1)
             {
@@ -214,9 +214,9 @@ using System.Threading.Tasks;
         /// </summary>
         /// <typeparam name="T">Type of values</typeparam>
         /// <param name="values">Values to Transpose</param>
-        /// <param name="dim0">First Dimention to transpose</param>
-        /// <param name="dim1">Second Dimention to transpose</param>
-        /// <param name="dim2">Third Dimention to transpose</param>
+        /// <param name="dim0">First dimension to transpose</param>
+        /// <param name="dim1">Second dimension to transpose</param>
+        /// <param name="dim2">Third dimension to transpose</param>
         /// <returns>Tranposed Array</returns>
         public static T[][][] ReOrder<T>(T[][][] values, int dim0, int dim1, int dim2)
         {
@@ -225,7 +225,7 @@ using System.Threading.Tasks;
             if (d.Any(m => m < 0 || m > 2))
                 throw new IndexOutOfRangeException("Dimensions are out of range.");
             if (dim0 == dim1 || dim0 == dim2 || dim1 == dim2)
-                throw new Exception("At least 2 Dimentions are the same.");
+                throw new Exception("At least 2 dimensions are the same.");
             // Tranposed ReOrder
             return ReOrderSub(values, dim0, dim1, dim2);
         }
@@ -234,10 +234,10 @@ using System.Threading.Tasks;
         /// </summary>
         /// <typeparam name="T">Type of values</typeparam>
         /// <param name="values">Values to Transpose</param>
-        /// <param name="dim0">First Dimention to transpose</param>
-        /// <param name="dim1">Second Dimention to transpose</param>
-        /// <param name="dim2">Third Dimention to transpose</param>
-        /// <param name="dim3">Forth Dimention to transpose</param>
+        /// <param name="dim0">First dimension to transpose</param>
+        /// <param name="dim1">Second dimension to transpose</param>
+        /// <param name="dim2">Third dimension to transpose</param>
+        /// <param name="dim3">Forth dimension to transpose</param>
         /// <returns>Tranposed Array</returns>
         public static T[][][][] ReOrder<T>(T[][][][] values, int dim0, int dim1, int dim2, int dim3)
         {
@@ -248,7 +248,7 @@ using System.Threading.Tasks;
             if (d.Any(m => m < 0 || m > 3))
                 throw new IndexOutOfRangeException("Dimensions are out of range.");
             if (d.ToHashSet().Count != 4)
-                throw new Exception("At least 2 Dimentions are the same.");
+                throw new Exception("At least 2 dimensions are the same.");
             // ReOrder Transpose
             return values.Select(vals => ReOrderSub(vals, dim1-1, dim2-1, dim3-1)).ToArray();
         }
@@ -258,9 +258,9 @@ using System.Threading.Tasks;
         /// </summary>
         /// <typeparam name="T">Type of values</typeparam>
         /// <param name="values">Values to Transpose</param>
-        /// <param name="dim0">First Dimention to transpose</param>
-        /// <param name="dim1">Second Dimention to transpose</param>
-        /// <param name="dim2">Third Dimention to transpose</param>
+        /// <param name="dim0">First dimension to transpose</param>
+        /// <param name="dim1">Second dimension to transpose</param>
+        /// <param name="dim2">Third dimension to transpose</param>
         /// <returns>Tranposed Array</returns>
         static T[][][] ReOrderSub<T>(T[][][] values, int dim0, int dim1, int dim2)
         {
@@ -405,13 +405,13 @@ using System.Threading.Tasks;
         }
 
         /// <summary>
-        /// Reshape List Dimensions to new Dimentions
+        /// Reshape List Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
-        /// <param name="dim2">Third Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
+        /// <param name="dim2">Third dimension output</param>
         /// <returns>New Reshaped List according to dim values</returns>
         public static List<List<T[]>> Reshape<T>(List<T[]> series, int dim0, int dim1, int dim2)
         {
@@ -428,7 +428,7 @@ using System.Threading.Tasks;
                     prod *= ar[i];
                 return prod;
             };
-            // If it needs to find the dimention
+            // If it needs to find the dimension
             if (dim.Any(v => v == -1))
             {
                 var total2 = total;
@@ -443,13 +443,13 @@ using System.Threading.Tasks;
                 if (ix < dim.Length - 1)
                 {
                     var prod = Product(dim, ix + 1);
-                    if (total2 % prod != 0) throw new Exception("Could Not find dim. There is No dimention for these sizes.");
+                    if (total2 % prod != 0) throw new Exception("Could Not find dim. There is No dimension for these sizes.");
                     dim[ix] = total2 / prod;
                 }
                 else dim[ix] = total2;
             }
             if (total != Product(dim, 0))
-                throw new Exception("Cannot be reshaped with those dimentions.");
+                throw new Exception("Cannot be reshaped with those dimensions.");
             dim0 = dim[0];
             dim1 = dim[1];
             dim2 = dim[2];
@@ -470,12 +470,12 @@ using System.Threading.Tasks;
             return output;
         }
         /// <summary>
-        /// Reshape List Dimensions to new Dimentions
+        /// Reshape List Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
         /// <returns>New List Array according to dim values</returns>
         public static List<List<T>> Reshape<T>(List<T> series, int dim0, int dim1)
         {
@@ -498,12 +498,12 @@ using System.Threading.Tasks;
             return ot;
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[][] Reshape<T>(T[] series, int dim0, int dim1)
         {
@@ -536,13 +536,13 @@ using System.Threading.Tasks;
             return ReshapeSub(series, dim0, dim1);   
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
-        /// <param name="dim2">Third Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
+        /// <param name="dim2">Third dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[][][] Reshape<T>(T[] series, int dim0, int dim1, int dim2)
         {
@@ -553,7 +553,7 @@ using System.Threading.Tasks;
             foreach (var v in d)
                 if (v <= 0) negcnt++;
             if (negcnt > 1) throw new Exception("Only 1 dim can have a -1 value.");
-            // Needs to find dimention
+            // Needs to find dimension
             if (negcnt == 1)
             {
                 // if it needs to find dim0
@@ -588,7 +588,7 @@ using System.Threading.Tasks;
                 }
                 else throw new Exception("The only negative value can be -1.");
             }
-            // Check if dimentions are dims for valid reshape
+            // Check if dimensions are dims for valid reshape
             else
             {
                 // Validation
@@ -617,17 +617,17 @@ using System.Threading.Tasks;
             return outs;
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim">Dimention of output</param>
+        /// <param name="dim">dimension of output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[] Reshape<T>(T[][] series, int dim)
         {
             // Length of all dimensions
             var len = (long)series.Length * series[0].Length;
-            // Find dimention
+            // Find dimension
             if (dim == -1)
                 dim = (int)len;
             // Validation
@@ -647,13 +647,13 @@ using System.Threading.Tasks;
             return y;
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
-        /// <param name="dim2">Third Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
+        /// <param name="dim2">Third dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[][][] Reshape<T>(T[][] series, int dim0, int dim1, int dim2)
         {
@@ -665,7 +665,7 @@ using System.Threading.Tasks;
             foreach (var v in d)
                 if (v <= 0) negcnt++;
             if (negcnt > 1) throw new Exception("Only 1 dim can have a -1 value.");
-            // Needs to find dimention
+            // Needs to find dimension
             if (negcnt == 1)
             {
                 // if it needs to find dim0
@@ -700,7 +700,7 @@ using System.Threading.Tasks;
                 }
                 else throw new Exception("The only negative value can be -1.");
             }
-            // Check if dimentions are dims for valid reshape
+            // Check if dimensions are dims for valid reshape
             else
             {
                 var p = (long)dim0 * dim1 * dim2;
@@ -715,13 +715,13 @@ using System.Threading.Tasks;
             return ReshapeSub(series, dim0, dim1, dim2);
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
-        /// <param name="dim2">Third Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
+        /// <param name="dim2">Third dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[][][] Reshape<T>(T[][][][] series, int dim0, int dim1, int dim2)
         {
@@ -739,7 +739,7 @@ using System.Threading.Tasks;
             if (negcnt > 1) throw new Exception("Only 1 dim can have a -1 value.");
             if (dim0 != series.Length)
                 throw new NotSupportedException("series.Length != dim0");
-            // Needs to find dimention
+            // Needs to find dimension
             if (negcnt == 1)
             {
                 // if it needs to find dim0
@@ -776,7 +776,7 @@ using System.Threading.Tasks;
                 }
                 else throw new Exception("The only negative value can be -1.");
             }
-            // Check if dimentions are dims for valid reshape
+            // Check if dimensions are dims for valid reshape
             else
             {
                 var p = (long)dim1 * dim2;
@@ -789,12 +789,12 @@ using System.Threading.Tasks;
             return series.Select(s => ReshapeSub(s, dim1, dim2)).ToArray();
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[][] Reshape<T>(T[][][] series, int dim0, int dim1)
         {
@@ -807,7 +807,7 @@ using System.Threading.Tasks;
                 if (v <= 0) negcnt++;
             if (negcnt > 1)
                 throw new Exception($"Only 1 dim can have a value of -1: got ({dim0}, {dim1}).");
-            // Needs to find dimention
+            // Needs to find dimension
             if (negcnt == 1)
             {
                 // if it needs to find dim0
@@ -831,7 +831,7 @@ using System.Threading.Tasks;
                 else
                     throw new Exception($"Invalid value for at least one dim: got ({dim0}, {dim1}).");
             }
-            // Check if dimentions are dims for valid reshape
+            // Check if dimensions are dims for valid reshape
             else if (len != (long)dim0 * dim1)
                 throw new Exception($"Cannot reshape from ({series.Length}, {series[0].Length}, {series[0][0].Length}) to --> ({dim0}, {dim1}).");
             // Initialize Array
@@ -866,14 +866,14 @@ using System.Threading.Tasks;
             return outs;
         }
         /// <summary>
-        /// Reshape Array Dimensions to new Dimentions
+        /// Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series_">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
-        /// <param name="dim2">Third Dimention output</param>
-        /// <param name="dim3">Forth Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
+        /// <param name="dim2">Third dimension output</param>
+        /// <param name="dim3">Forth dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         public static T[][][][] Reshape<T>(T[][][] series_, int dim0, int dim1, int dim2, int dim3)
         {
@@ -891,7 +891,7 @@ using System.Threading.Tasks;
             if (dim0 != series_.Length)
                 throw new NotSupportedException("dim0 != series.Length");
             if (negcnt > 1) throw new Exception("Only 1 dim can have a -1 value.");
-            // Needs to find dimention
+            // Needs to find dimension
             if (negcnt == 1)
             {
                 // if it needs to find dim1
@@ -926,7 +926,7 @@ using System.Threading.Tasks;
                 }
                 else throw new Exception("The only negative value can be -1.");
             }
-            // Check if dimentions are dims for valid reshape
+            // Check if dimensions are dims for valid reshape
             else
             {
                 var p = (long)dim1 * dim2 * dim3;
@@ -941,12 +941,12 @@ using System.Threading.Tasks;
             return series_.Select(s => ReshapeSub(s, dim1, dim2, dim3)).ToArray();
         }
         /// <summary>
-        /// Sub Function: Reshape Array Dimensions to new Dimentions
+        /// Sub Function: Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         static T[][] ReshapeSub<T>(T[] series, int dim0, int dim1)
         {
@@ -966,12 +966,12 @@ using System.Threading.Tasks;
             return ot;
         }
         /// <summary>
-        /// Sub Function: Reshape Array Dimensions to new Dimentions
+        /// Sub Function: Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         static T[][] ReshapeSub<T>(T[][][] series, int dim0, int dim1)
         {
@@ -1009,13 +1009,13 @@ using System.Threading.Tasks;
             return outs;
         }
         /// <summary>
-        /// Sub Function: Reshape Array Dimensions to new Dimentions
+        /// Sub Function: Reshape Array Dimensions to new dimensions
         /// </summary>
         /// <typeparam name="T">Type of series</typeparam>
         /// <param name="series">Values to Reshape</param>
-        /// <param name="dim0">First Dimention output</param>
-        /// <param name="dim1">Second Dimention output</param>
-        /// <param name="dim2">Third Dimention output</param>
+        /// <param name="dim0">First dimension output</param>
+        /// <param name="dim1">Second dimension output</param>
+        /// <param name="dim2">Third dimension output</param>
         /// <returns>New Reshaped Array according to dim values</returns>
         static T[][][] ReshapeSub<T>(T[][] series, int dim0, int dim1, int dim2)
         {
@@ -1204,15 +1204,15 @@ using System.Threading.Tasks;
         /// <summary>
         /// Create an Array of Zeros
         /// </summary>
-        /// <param name="dim">Dimention of Output Array</param>
+        /// <param name="dim">dimension of Output Array</param>
         /// <returns>Array of Zeros as a value</returns>
         public static float[] Zeros(int dim)
             => new float[dim];
         /// <summary>
         /// Create an Array of Zeros
         /// </summary>
-        /// <param name="dim0">Dimention (0) of Output Array</param>
-        /// <param name="dim1">Dimention (1) of Output Array</param>
+        /// <param name="dim0">dimension (0) of Output Array</param>
+        /// <param name="dim1">dimension (1) of Output Array</param>
         /// <returns>Array of Zeros as a value</returns>
         public static float[][] Zeros(int dim0, int dim1)
         {
@@ -1224,9 +1224,9 @@ using System.Threading.Tasks;
         /// <summary>
         /// Create an Array of Zeros
         /// </summary>
-        /// <param name="dim0">Dimention (0) of Output Array</param>
-        /// <param name="dim1">Dimention (1) of Output Array</param>
-        /// <param name="dim2">Dimention (2) of Output Array</param>
+        /// <param name="dim0">dimension (0) of Output Array</param>
+        /// <param name="dim1">dimension (1) of Output Array</param>
+        /// <param name="dim2">dimension (2) of Output Array</param>
         /// <returns>Array of Zeros as a value</returns>
         public static float[][][] Zeros(int dim0, int dim1, int dim2)
         {
@@ -1239,7 +1239,7 @@ using System.Threading.Tasks;
         /// <summary>
         /// Create an Array of Ones
         /// </summary>
-        /// <param name="dim">Dimention of Output Array</param>
+        /// <param name="dim">dimension of Output Array</param>
         /// <returns>Array of ones as a value</returns>
         public static float[] Ones(int dim)
         {
@@ -1251,8 +1251,8 @@ using System.Threading.Tasks;
         /// <summary>
         /// Create an Array of Ones
         /// </summary>
-        /// <param name="dim0">Dimention (0) of Output Array</param>
-        /// <param name="dim1">Dimention (1) of Output Array</param>
+        /// <param name="dim0">dimension (0) of Output Array</param>
+        /// <param name="dim1">dimension (1) of Output Array</param>
         /// <returns>Array of ones as a value</returns>
         public static float[][] Ones(int dim0, int dim1)
         {
@@ -1264,9 +1264,9 @@ using System.Threading.Tasks;
         /// <summary>
         /// Create an Array of Ones
         /// </summary>
-        /// <param name="dim0">Dimention (0) of Output Array</param>
-        /// <param name="dim1">Dimention (1) of Output Array</param>
-        /// <param name="dim2">Dimention (2) of Output Array</param>
+        /// <param name="dim0">dimension (0) of Output Array</param>
+        /// <param name="dim1">dimension (1) of Output Array</param>
+        /// <param name="dim2">dimension (2) of Output Array</param>
         /// <returns>Array of ones as a value</returns>
         public static float[][][] Ones(int dim0, int dim1, int dim2)
         {
@@ -1280,7 +1280,7 @@ using System.Threading.Tasks;
     /// Create an Array that all elements are filled with 'value'
     /// </summary>
     /// <param name="value">Value to fill all elements in Array</param>
-    /// <param name="dim">Dimention of Output Array</param>
+    /// <param name="dim">dimension of Output Array</param>
     /// <returns>Array that all elements are filled with 'value'</returns>
     public static T[] Fill<T>(int dim, T value)
     {
@@ -1293,8 +1293,8 @@ using System.Threading.Tasks;
     /// Create an Array that all elements are filled with 'value'
     /// </summary>
     /// <param name="value">Value to fill all elements in Array</param>
-    /// <param name="dim0">Dimention (0) of Output Array</param>
-    /// <param name="dim1">Dimention (1) of Output Array</param>
+    /// <param name="dim0">dimension (0) of Output Array</param>
+    /// <param name="dim1">dimension (1) of Output Array</param>
     /// <returns>Array that all elements are filled with 'value'</returns>
     public static T[][] Fill<T>(int dim0, int dim1, T value)
     {
@@ -1307,9 +1307,9 @@ using System.Threading.Tasks;
     /// Create an Array that all elements are filled with 'value'
     /// </summary>
     /// <param name="value">Value to fill all elements in Array</param>
-    /// <param name="dim0">Dimention (0) of Output Array</param>
-    /// <param name="dim1">Dimention (1) of Output Array</param>
-    /// <param name="dim2">Dimention (2) of Output Array</param>
+    /// <param name="dim0">dimension (0) of Output Array</param>
+    /// <param name="dim1">dimension (1) of Output Array</param>
+    /// <param name="dim2">dimension (2) of Output Array</param>
     /// <returns>Array that all elements are filled with 'value'</returns>
     public static T[][][] Fill<T>(int dim0, int dim1, int dim2, T value)
     {
@@ -1322,10 +1322,10 @@ using System.Threading.Tasks;
     /// Create an Array that all elements are filled with 'value'
     /// </summary>
     /// <param name="value">Value to fill all elements in Array</param>
-    /// <param name="dim0">Dimention (0) of Output Array</param>
-    /// <param name="dim1">Dimention (1) of Output Array</param>
-    /// <param name="dim2">Dimention (2) of Output Array</param>
-    /// <param name="dim3">Dimention (3) of Output Array</param>
+    /// <param name="dim0">dimension (0) of Output Array</param>
+    /// <param name="dim1">dimension (1) of Output Array</param>
+    /// <param name="dim2">dimension (2) of Output Array</param>
+    /// <param name="dim3">dimension (3) of Output Array</param>
     /// <returns>Array that all elements are filled with 'value'</returns>
     public static T[][][][] Fill<T>(int dim0, int dim1, int dim2, int dim3, T value)
     {

@@ -57,7 +57,7 @@ namespace MiniNet
                 y0[i] = _cs[i].Forward(x[i], out object ct);
                 ctx.Add(ct);
             }
-            // Flatten last dimentions
+            // Flatten last dimensions
             var y = y0.Select(yi => yi.Select(yj => yj.SelectMany(yk => yk).ToArray()).ToArray()).ToArray();
             return Utilz.TransposeArray(y);     // Transpose
         }
