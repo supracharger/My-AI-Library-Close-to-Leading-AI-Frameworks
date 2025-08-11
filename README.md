@@ -196,7 +196,7 @@ public class Net : NetModule<float[][]>
     // Again, You do not need to define the forward pass & backwards pass explicitly
     public Tensor<float[][]> Foward(Tensor<float[][]> x)
     {
-        // Split into 2 one dim1
+        // Split into 2 on dim1
         var split = Function.Split.Fwd(x, 1, 12, 12);
         x = split[0];
         var xix = split[1];
