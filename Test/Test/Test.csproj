@@ -7,6 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <TieredCompilation>true</TieredCompilation>   <!-- default on .NET Core 3+ -->
+    <TieredPGO>true</TieredPGO>                   <!-- enable dynamic PGO on .NET 7 -->
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
   </ItemGroup>

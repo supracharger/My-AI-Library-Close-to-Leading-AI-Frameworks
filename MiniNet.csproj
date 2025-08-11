@@ -8,6 +8,13 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <TieredCompilation>true</TieredCompilation>   <!-- default on .NET Core 3+ -->
+    <TieredPGO>true</TieredPGO>                   <!-- enable dynamic PGO on .NET 7 -->
+  </PropertyGroup>
+
+
   <ItemGroup>
     <Compile Remove="Test\**" />
     <EmbeddedResource Remove="Test\**" />
