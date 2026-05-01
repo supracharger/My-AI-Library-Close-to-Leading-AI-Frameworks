@@ -6,6 +6,8 @@
 
 This library closer represents the cutting edge library in PyTorch.
 
+***This is a prototype model WITHOUT contiguous tensors & CUDA bindings (GPU Acceleration).*** This is in contrary to the Proprietary model with contiguous tensors, CUDA bindings, more modules ...
+
 This library utilizes what is known as ***Auto Grad***. Just define the forward pass and train the network!
 
 This library also supports ***Multithreading***. It chunks the dataset to the number of cores on your CPU. See
